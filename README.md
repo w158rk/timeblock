@@ -13,6 +13,23 @@ Currently, only linux is supported
 ## Screenshot
 ![img](docs/screenshot.png)
 
+It is generated from the following file
+
+```
+event Sport:Run E5F4E3
+event Study DFB9DF
+
+2021-05-02 07:00 1 Sport:Run
+"abcdefg"
+
+3 Sport:Run
+"note2"
+
+5 Study
+"note2"
+
+```
+
 ---------------------------------------------------
 
 ## Based on:
