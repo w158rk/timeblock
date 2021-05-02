@@ -16,7 +16,10 @@ def main(argv):
     visitor = TreeVisitor()
     visitor.visit(tree)
 
-    print(all_events_json())
-    print(all_records_json())
+    with open("events.json", "w") as f:
+        f.write(all_events_json())
+
+    with open("records.json", "w") as f:
+        f.write(all_records_json())
 
 main(sys.argv)
