@@ -7,7 +7,7 @@ all : deploy
 
 build:
 	./build.sh
-	cd $(FRONT_DIR) && && npm install && npm run build
+	cd $(FRONT_DIR) && npm install && npm run build
 
 deploy: 
 	rm -rf $(SRC_DIR)/templates

@@ -35,6 +35,9 @@ def reload():
     print('reload')
     set_file(path)
 
-set_file(path)
-observer = observe(path, reload)
-app.run()
+def main():
+    set_file(path)
+    observer = observe(path, reload)
+    app.run(host='192.168.1.104')
+
+main()
