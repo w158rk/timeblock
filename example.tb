@@ -1,0 +1,22 @@
+event Sport:Run E5F4E3
+event Study DFB9DF
+event Play 93C6F0
+event Entertainment:Video 93C6F0
+event Sleep F9DEC9
+
+2021-05-02 07:00 1 Sport:Run
+"abcdefg"
+
+3 Sport:Run
+"note2"
+
+5 Study
+"note2"
+
+6 Study
+
+1 Play
+
+2 Sleep
+
+2021-05-02 21:30 1 Entertainment:Video

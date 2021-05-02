@@ -6,6 +6,6 @@ TimeBlock*.py
 *.tokens
 *.interp
 
+templates
 
 bin/
-example*
