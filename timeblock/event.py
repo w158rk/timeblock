@@ -47,3 +47,6 @@ def print_all_events():
 def all_events_json():
     ret = [v.__dict__ for _,v in events.items()]
     return json.dumps(ret)
+
+def clear_events():
+    events.clear()

@@ -1,9 +1,17 @@
 ROOT_DIR=$(PWD)
 SRC_DIR=$(ROOT_DIR)/timeblock
 GRAMMAR_DIR=$(SRC_DIR)/grammar
+FRONT_DIR=$(ROOT_DIR)/react/timeblock
+
+all : deploy
 
 build:
 	./build.sh
+	cd $(FRONT_DIR) && npm run build
+
+deploy: 
+	rm -rf $(SRC_DIR)/templates
+	ln -s $(FRONT_DIR)/build $(SRC_DIR)/templates
 
 clean:
 	rm $(GRAMMAR_DIR)/TimeBlock*.py

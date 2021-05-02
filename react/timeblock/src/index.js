@@ -1,19 +1,32 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import {Container,Grid} from '@material-ui/core';
-import {Provider} from 'react-redux';
+import {Provider, useDispatch} from 'react-redux';
 import store from './store';
 import reportWebVitals from './reportWebVitals';
 import Header from './Header';
 import Footer from './Footer';
 import Sidebar from './Sidebar';
 import TimeTable from './TimeTable';
+import { changeTimeBlocks } from './slices/timeBlocksSlice';
+import axios from 'axios';
 
-ReactDOM.render(
-    <React.StrictMode>
-    <Provider store={store}>
-        <Container>
+const App = () => {
+    const dispatch = useDispatch();
+    useEffect(()=>{
+        axios.get('/records')
+            .then((response) => {
+                dispatch(changeTimeBlocks(response.data));       
+                // for flask, the returned data has been converted to js object
+                // there is no need to use JSON.parse here
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    }, []);
+    return (
+    <Container>
             <Grid container style={{height: '10vh'}}>
                 <Grid item xs={12} style={{marginBottom: 0, paddingBottom: 0}}>
                     <Header />
@@ -33,6 +46,14 @@ ReactDOM.render(
                 </Grid>    
             </Grid>          
         </Container>
+
+    );
+}
+
+ReactDOM.render(
+    <React.StrictMode>
+    <Provider store={store}>
+        <App />
     </Provider>
     </React.StrictMode>,
     document.getElementById('root')

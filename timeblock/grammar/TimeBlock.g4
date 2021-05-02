@@ -16,12 +16,12 @@ length: DIGIT+;
 
 note: STRING;
 
-color: '#' DIGIT6;
+color: HEX6;
 
 EVENT: 'event'; 
 ID: [A-Z][a-z0-9]*;
 LINE: '-';
-DIGIT6: [0-9] [0-9] [0-9] [0-9] [0-9] [0-9];
+HEX6: [0-9A-F] [0-9A-F] [0-9A-F] [0-9A-F] [0-9A-F] [0-9A-F];
 DIGIT4: [0-9] [0-9] [0-9] [0-9];
 DIGIT2: [0-9] [0-9];
 DIGIT: [0-9];

@@ -63,3 +63,5 @@ def all_records_json():
     ret = [record.__dict__ for record in records]
     return json.dumps(ret)
 
+def clear_records():
+    records.clear()

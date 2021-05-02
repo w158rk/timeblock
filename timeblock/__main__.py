@@ -1,25 +1,40 @@
+# import sys
+# from antlr4 import CommonTokenStream, FileStream
+# from .grammar import TimeBlockLexer, TimeBlockParser
+# from .treevisitor import TreeVisitor
+# from .event import all_events_json
+# from .record import all_records_json
+
+# def main(argv):
+#     input_stream = FileStream(argv[1])
+#     lexer = TimeBlockLexer(input_stream)
+#     stream = CommonTokenStream(lexer)
+#     parser = TimeBlockParser(stream)
+#     tree = parser.desc()
+#     # print(tree.toStringTree(recog=parser))
+
+#     visitor = TreeVisitor()
+#     visitor.visit(tree)
+
+#     with open("events.json", "w") as f:
+#         f.write(all_events_json())
+
+#     with open("records.json", "w") as f:
+#         f.write(all_records_json())
+
+# main(sys.argv)
+
+
+from .api import app, set_file
 import sys
-from antlr4 import CommonTokenStream, FileStream
-from .grammar import TimeBlockLexer, TimeBlockParser
-from .treevisitor import TreeVisitor
-from .event import all_events_json
-from .record import all_records_json
+from .watch import observe
 
-def main(argv):
-    input_stream = FileStream(argv[1])
-    lexer = TimeBlockLexer(input_stream)
-    stream = CommonTokenStream(lexer)
-    parser = TimeBlockParser(stream)
-    tree = parser.desc()
-    # print(tree.toStringTree(recog=parser))
+path = sys.argv[1]
 
-    visitor = TreeVisitor()
-    visitor.visit(tree)
+def reload():
+    print('reload')
+    set_file(path)
 
-    with open("events.json", "w") as f:
-        f.write(all_events_json())
-
-    with open("records.json", "w") as f:
-        f.write(all_records_json())
-
-main(sys.argv)
+set_file(path)
+observer = observe(path, reload)
+app.run()
