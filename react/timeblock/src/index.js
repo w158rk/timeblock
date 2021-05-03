@@ -2,13 +2,14 @@ import React, { useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import {Container,Grid} from '@material-ui/core';
-import {Provider, useDispatch} from 'react-redux';
+import {Provider, useDispatch, useSelector} from 'react-redux';
 import store from './store';
 import reportWebVitals from './reportWebVitals';
 import Header from './Header';
 import Footer from './Footer';
 import Sidebar from './Sidebar';
 import TimeTable from './TimeTable';
+import Statistics from './Statistics';
 import { changeTimeBlocks } from './slices/timeBlocksSlice';
 import axios from 'axios';
 
@@ -25,6 +26,8 @@ const App = () => {
                 console.log(error);
             });
     }, []);
+
+    const selected = useSelector(state=>state.opts.selectedView);
     return (
     <Container>
             <Grid container style={{height: '10vh'}}>
@@ -35,9 +38,15 @@ const App = () => {
             <Grid container>
                 <Grid item xs={2}>
                     <Sidebar />
-                </Grid>    
+                </Grid>
+                
                 <Grid item xs={10}>
-                    <TimeTable />
+                {   
+                    selected==0?<TimeTable />
+                    : (
+                        selected==1?<Statistics />:<TimeTable />
+                    )
+                }
                 </Grid>    
             </Grid>          
             <Grid container style={{height: '10vh'}}>
