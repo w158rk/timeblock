@@ -1,31 +1,45 @@
 grammar TimeBlock;
 
+// lex
+
+Event: 'event'; 
+
+ID: [A-Z][a-z0-9]*;
+
+Line: '-';
+
+Hex6: [0-9A-F] [0-9A-F] [0-9A-F] [0-9A-F] [0-9A-F] [0-9A-F];
+
+Digit: [0-9];
+
+String: '"' (Esc | ~["\\])* '"';
+
+fragment Esc : '\\' (["\\/bfnrt]) ;
+
+WS : [ \t\r\n]+ -> skip ; // skip spaces, tabs, newlines, \r (Windows)
+
+// grammar
+
 desc: event* record*;
 
-event: EVENT eventname color?;
+event: Event eventname color?;
 
 eventname: ID (':' ID)*;
 
 record: date? time? length eventname note?;
 
-date: DIGIT4 LINE DIGIT2 LINE DIGIT2;
+date: digit4 Line digit2 Line digit2;
 
-time: DIGIT2 ':' DIGIT2;
+time: digit2 ':' digit2;
 
-length: DIGIT+;
+length: integer;
 
-note: STRING;
+note: String;
 
-color: HEX6;
+color: Hex6;
 
-EVENT: 'event'; 
-ID: [A-Z][a-z0-9]*;
-LINE: '-';
-HEX6: [0-9A-F] [0-9A-F] [0-9A-F] [0-9A-F] [0-9A-F] [0-9A-F];
-DIGIT4: [0-9] [0-9] [0-9] [0-9];
-DIGIT2: [0-9] [0-9];
-DIGIT: [0-9];
-STRING: '"' (ESC | ~["\\])* '"';
-fragment ESC : '\\' (["\\/bfnrt]) ;
+digit4: Digit Digit Digit Digit;
 
-WS : [ \t\r\n]+ -> skip ; // skip spaces, tabs, newlines, \r (Windows)
+digit2: Digit Digit;
+
+integer: Digit +;

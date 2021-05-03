@@ -1,11 +1,11 @@
 __pycache__/
 TimeBlock*.py
+example.tb
 
 
 .antlr/
 *.tokens
 *.interp
 
-templates
 
 bin/
