@@ -27,6 +27,7 @@
 
 from .api import app, set_file
 import sys
+import os
 from .watch import observe
 
 path = sys.argv[1]
@@ -36,8 +37,10 @@ def reload():
     set_file(path)
 
 def main():
+    global path
+    path = os.path.abspath(path)
     set_file(path)
     observer = observe(path, reload)
-    app.run(host='192.168.1.104')
+    app.run(host='0.0.0.0')
 
 main()

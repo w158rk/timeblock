@@ -9,3 +9,7 @@ example.tb
 
 
 bin/
+
+# npm
+package-lock.json
+templates/
