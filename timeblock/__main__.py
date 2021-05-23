@@ -33,14 +33,14 @@ from .watch import observe
 path = sys.argv[1]
 
 def reload():
-    print('reload')
     set_file(path)
 
 def main():
     global path
     path = os.path.abspath(path)
     set_file(path)
-    observer = observe(path, reload)
+    observer = observe(os.path.dirname(path), reload)
+    observer.start()
     app.run(host='0.0.0.0')
 
 main()

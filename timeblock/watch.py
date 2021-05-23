@@ -14,7 +14,6 @@ class Handler(FileSystemEventHandler):
 
 def observe(path='', callback=None):
     handler = Handler(callback)
-    observer = Observer()
-    observer.schedule(handler, path)
-    observer.start()
-    return observer
+    ob = Observer()
+    ob.schedule(handler, path)
+    return ob

@@ -27,7 +27,8 @@ def set_file(name):
         clear()
         visitor = TreeVisitor()
         visitor.visit(tree)
-    except:
+    except Exception as e:
+        print(e)
         pass
 
 app = Flask(__name__, static_folder="templates/static",static_url_path="/static")
