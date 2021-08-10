@@ -4,7 +4,7 @@ SET CLASSPATH=.\bin;%CLASSPATH%
 SET ROOT_DIR=%CD%
 SET SRC_DIR=%ROOT_DIR%\timeblock
 SET GRAMMAR_FILE=%SRC_DIR%\grammar\TimeBlock.g4
-SET FRONT_DIR=%ROOT_DIR%\react\timeblock
+SET FRONT_DIR=%ROOT_DIR%\static
 SET TEMPLATE_DIR=%SRC_DIR%\templates
 
 @ECHO ON
@@ -13,4 +13,4 @@ SET TEMPLATE_DIR=%SRC_DIR%\templates
 @REM cd %FRONT_DIR% && npm install && npm run build
 cd %ROOT_DIR%
 rd /s /q %SRC_DIR%\templates
-mklink /j %TEMPLATE_DIR% %FRONT_DIR%\build 
+mklink /j %TEMPLATE_DIR% %FRONT_DIR%\build
