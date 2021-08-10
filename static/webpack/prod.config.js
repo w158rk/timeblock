@@ -7,7 +7,7 @@ module.exports = {
     mode: "production",
     devtool: 'source-map',
 
-    entry: ['bootstrap-loader/extractStyles'],
+    // entry: ['bootstrap-loader/extractStyles'],
 
     output: {
         publicPath: 'dist/',
@@ -16,7 +16,12 @@ module.exports = {
     module: {
         rules: [{
             test: /\.scss$/,
-            loader: 'style!css!postcss-loader!sass',
+            use: [
+                {loader: 'style-loader'},
+                {loader: 'css-loader'},
+                {loader: 'postcss-loader'},
+                {loader: 'sass-loader'}
+            ]
         }],
     },
 

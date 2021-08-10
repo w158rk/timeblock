@@ -46,7 +46,7 @@ const common = {
         //             loader: 'imports-loader',
         //         }
         //     ]
-        // }, 
+        // },
         {
             test: /\.woff(\?v=\d+\.\d+\.\d+)?$/,
             use: [
@@ -145,5 +145,5 @@ if (TARGET === 'start' || !TARGET) {
 }
 
 if (TARGET === 'build' || !TARGET) {
-    module.exports = merge(production, common);
+    module.exports = merge(development, common);
 }

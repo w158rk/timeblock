@@ -12,7 +12,7 @@ const ProtectedView = (props) => {
     const dispatch = useDispatch();
 
     useComponentDidMount(() => {
-        dispatch(() => dataActions.fetchProtectedData(token, dispatch));
+        dispatch(() => dataActions.fetchData(token, dispatch));
     });
 
     return (
