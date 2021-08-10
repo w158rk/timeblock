@@ -13,3 +13,6 @@ bin/
 # npm
 package-lock.json
 templates/
+
+node_modules/
+react/

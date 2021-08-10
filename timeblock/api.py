@@ -17,7 +17,7 @@ def set_file(name):
     filename = name
 
     try:
-        input_stream = FileStream(filename)
+        input_stream = FileStream(filename, encoding='utf-8')
         lexer = TimeBlockLexer(input_stream)
         stream = CommonTokenStream(lexer)
         parser = TimeBlockParser(stream)
@@ -37,6 +37,6 @@ app = Flask(__name__, static_folder="templates/static",static_url_path="/static"
 def main():
     return render_template('index.html')
 
-@app.route("/records")
-def home():
+@app.route("/api/records")
+def records():
     return all_records_json()

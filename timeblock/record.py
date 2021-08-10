@@ -10,9 +10,9 @@ class Record(object):
 
     def __init__(self, date, time, length, event, note):
         self.date = date
-        self.time = time 
-        self.length = length 
-        self.event = event 
+        self.time = time
+        self.length = length
+        self.event = event
         self.note = note
         self.color = get_event(event).color
 
@@ -27,7 +27,7 @@ class Record(object):
         return ', '.join(ret)
 
 def add_record(length, event, note="", date="", time=""):
-    
+
     get_event(event)         # might raise KeyError
     if date:
         nums = date.split('-')
@@ -44,7 +44,7 @@ def add_record(length, event, note="", date="", time=""):
         time = datetime.time(hour, minute)
     else:
         time = get_current_time()
-    
+
     set_current(date, time)
     inc_current(length)
 

@@ -122,18 +122,18 @@ event Sleep F9DEC9
 2. 运行后端
    ```sh
    pip install -r requirement.txt
-   python manage.py runserver
+   python -m timeblock [path-to-your-trace-file]
    ```
 3. 运行前端
    ```sh
-   cd static 
+   cd static
    npm install
    npm start
    ```
 
 4. 构建前端
    ```sh
-   cd static 
+   cd static
    npm run build:production
    ```
 
@@ -146,6 +146,10 @@ event Sleep F9DEC9
 
 <!-- ROADMAP -->
 ## 路线图
+
+- [ ] 更友好的表格
+- [ ] 日期切换
+- [ ] 日、周、月、年
 
 <!-- CONTRIBUTING -->
 ## 贡献

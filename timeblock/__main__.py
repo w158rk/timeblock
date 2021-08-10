@@ -33,6 +33,7 @@ from .watch import observe
 path = sys.argv[1]
 
 def reload():
+    print(path)
     set_file(path)
 
 def main():
@@ -41,6 +42,6 @@ def main():
     set_file(path)
     observer = observe(os.path.dirname(path), reload)
     observer.start()
-    app.run(host='0.0.0.0')
+    app.run(host='127.0.0.1')
 
 main()
