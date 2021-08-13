@@ -33,10 +33,13 @@ def set_file(name):
 
 app = Flask(__name__, static_folder="templates/")
 
-@app.route("/")
-def main():
-    return render_template('index.html')
 
 @app.route("/api/records")
 def records():
     return all_records_json()
+
+@app.route('/', defaults={'path': ''})
+@app.route('/<path:path>')
+def main(path):
+    return render_template('index.html')
+
